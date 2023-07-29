@@ -14,7 +14,8 @@ public class LogoutController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.invalidate();
+		//loginId 세션만 지우기
+		session.removeAttribute("loginMember");
 		
 		response.sendRedirect(request.getContextPath()+"/login");	}
 
