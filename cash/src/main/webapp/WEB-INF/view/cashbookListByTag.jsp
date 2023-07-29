@@ -7,12 +7,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/font.css" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Jua&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
+<body style="background: #f6f5f7;">
 <div class="container">
-${word} 
-<table border="1">
-	<tr>
+<nav class="navbar navbar-expand bg-white navbar-white">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="${pageContext.request.contextPath}/memberOne">회원정보</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/logout">로그아웃</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="${pageContext.request.contextPath}/calendar">달력</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+<br>
+<h2 class="text-center"># ${word} </h2>
+<table class="table table-bordered">
+	<tr class="table-danger">
 		<th>날짜</th>
 		<th>가격</th>
 		<th>메모</th>
@@ -21,7 +44,8 @@ ${word}
 	</tr>
 	<c:forEach items="${hoList}" var="c">
 		<tr>
-			<td>${c.cashbookDate}</td>
+		
+			<td><a href="${pageContext.request.contextPath}/cashbookOne?cashbookDate=${c.cashbookDate}">${c.cashbookDate}</a></td>
 		<c:if test="${c.category == '수입'}">
 			<td style="color:blue;">+${c.price}</td>
 		</c:if>
@@ -34,7 +58,7 @@ ${word}
 		</tr>
 	</c:forEach>
 </table>
-	<div>
+	<div class="text-center">
         <c:forEach begin="${minPage}" end="${maxPage}" var="i">
            <c:if test="${i == currentPage}">
               <a>

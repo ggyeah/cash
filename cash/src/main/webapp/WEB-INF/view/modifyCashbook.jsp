@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>modifyCashbook.jsp</title>
+<link rel="stylesheet" href="css/login.css" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -58,7 +59,9 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<div class="container">
 <form method="post" action="${pageContext.request.contextPath}/modifyCashbook?cashbookNo=${cashbookNo}" id="Form">
+	<h1>수정</h1>
 	<table>
 		<tr>
 			<th>이름</th>
@@ -90,5 +93,6 @@ $(document).ready(function() {
 	</table>
 		<button type ="submit" id="Btn">수정</button>
 </form>
+</div>
 </body>
 </html>

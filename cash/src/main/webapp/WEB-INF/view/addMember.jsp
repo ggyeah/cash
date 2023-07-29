@@ -5,6 +5,8 @@
 <meta charset="UTF-8">
 <title>addMember.jsp</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<!-- Css Styles -->
+<link rel="stylesheet" href="css/addmember.css" type="text/css">
 <script>
 $(document).ready(function() {
     // 시작시 id 입력 폼에 포커스
@@ -75,23 +77,24 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class="controller">
-	<h1>회원가입</h1>
-	<form method="post" action="${pageContext.request.contextPath}/addMember" id="Form">
-	<table>
-		<tr>
-			<th>아이디</th>
-			<td><input type="text" name="memberId" id="id">
-			<span id="idMsg" class="msg"></span></td>
-		</tr>
-		<tr>
-			<th>비밀번호</th>
-			<td><input type="password" name="memberPw" id="pw">
-			<span id="pwMsg" class="msg"></span></td>
-		</tr>
-	</table>
-	<button type ="submit"  id="Btn">회원가입</button>
-	</form>
+<div class="container" id="container">
+  <div class="form-container sign-in-container">
+<form method="post" action="${pageContext.request.contextPath}/addMember" id="Form">
+      <h1>Join</h1>
+      <input type="text" name="memberId" id="id" placeholder="ID" />
+      <input type="password" name="memberPw" id="pw" placeholder="Password" />
+     <button type ="submit" id="Btn">Join</button>
+    </form>
+  </div>
+<div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-right">
+       <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+         <a href = "${pageContext.request.contextPath}/login">LOGIN</a>
+      </div>
+       </div>
+    </div> 
 </div>
 </body>
 </html>

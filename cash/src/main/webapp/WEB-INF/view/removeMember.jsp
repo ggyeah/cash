@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/font.css" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Jua&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/login.css" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -36,13 +41,14 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class="controller">
-	<h1>회원탈퇴</h1>
+<div class="container">
 	<form method="post" action="${pageContext.request.contextPath}/removeMember" id="Form">
-	<h4>회원을 탈퇴하시려면 비밀번호를 입력하세요</h4>
+	<h1>회원탈퇴</h1>
 	<table>
 		<tr>
-			<th>비밀번호<th>
+			<th>회원을 탈퇴하시려면 비밀번호를 입력하세요<th>
+		</th>
+		<tr>
 			<td><input type="password" name="memberPw" id="pw">
 			<span id="pwMsg" class="msg"></span></td>
 		</tr>

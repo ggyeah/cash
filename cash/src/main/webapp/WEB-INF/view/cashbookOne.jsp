@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/font.css" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Jua&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
 function deleteCashbook(cashbookNo, cashbookDate) {
@@ -30,12 +36,29 @@ function deleteCashbook(cashbookNo, cashbookDate) {
 }
 </script>
 </head>
-<body>
+<body style="background: #f6f5f7;">
 <div class="container">
-${memberId} 
+<nav class="navbar navbar-expand bg-white navbar-white">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="${pageContext.request.contextPath}/memberOne">회원정보</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/logout">로그아웃</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="${pageContext.request.contextPath}/calendar">달력</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<!--  리스트로 반복안하고 하나만 가져오기 -->
+<h2 class="text-center">${list[0].cashbookDate}</h2>
 <form method="post" action="${pageContext.request.contextPath}/removeCashbook" id="Form">
-<table border="1">
-	<tr>
+<table  class="table table-bordered">
+	<tr class="table-danger">
 		<th>날짜</th>
 		<th>가격</th>
 		<th>메모</th>
@@ -56,8 +79,8 @@ ${memberId}
 			<td>${c.memo}</td>
 			<td>${c.createdate}</td>
 			<td>${c.updatedate}</td>
-			<td><a href="${pageContext.request.contextPath}/modifyCashbook?cashbookNo=${c.cashbookNo}">수정</a></td>
-			 <td><button type="button" onclick="deleteCashbook(${c.cashbookNo}, '${c.cashbookDate}')">삭제</button></td>
+			<td><a href="${pageContext.request.contextPath}/modifyCashbook?cashbookNo=${c.cashbookNo}" class="btn btn-outline-secondary btn-sm">수정</a></td>
+			 <td><button type="button" onclick="deleteCashbook(${c.cashbookNo}, '${c.cashbookDate}')" class="btn btn-outline-secondary btn-sm">삭제</button></td>
 		</tr>
 	</c:forEach>
 </table>
