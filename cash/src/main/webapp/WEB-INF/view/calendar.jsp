@@ -48,8 +48,8 @@ ${targetYear}년 ${targetMonth+1}월
 		</c:forEach>
 	</div>
 </c:if>
-<table class="table table-bordered">
-   <tr class="table-danger">
+  <table class="table table-bordered">
+    <tr class="table-danger">
       <th>월</th>
       <th>화</th>
       <th>수</th>
@@ -57,49 +57,47 @@ ${targetYear}년 ${targetMonth+1}월
       <th>금</th>
       <th>토</th>
       <th>일</th>
-   	</tr>
-	<c:forEach var="i" begin="0" end="${totalCell - 1}" step="1">
-		<c:set var="d" value="${i-beginBlank+1}">
-		</c:set>
-		<c:if test="${i!=0 && i%7==0}">
-			<tr>
-		</c:if>
-		
-		<c:if test="${d<1 || d > lastDate}">
-			<td></td>
-		</c:if>
-		<c:if test="${!(d<1 || d > lastDate)}">
-			<td>
-				${d}
-				<a class="btn btn-outline-secondary btn-sm" href="${pageContext.request.contextPath}/addCashbook?cashbookDate=${targetYear}-${targetMonth < 10 ? '0' : ''}${targetMonth+1}-${d < 10 ? '0' : ''}${d}">추가</a>
-				<!-- 총수입 총지출 구하는 변수선언 -->
-				<c:set var="totalIncome" value="0" />
-				<c:set var="totalExpenses" value="0" />
-				<c:forEach var="c" items="${list}"  varStatus="status">
-				<a href="${pageContext.request.contextPath}/cashbookOne?cashbookDate=${c.cashbookDate}">
-                  		 <c:if test="${d == fn:substring(c.cashbookDate,8,11)}">
-                      		 <div>
-                          	 <c:if test="${c.category == '수입'}">
-                             	 <span style="color:black;">+${c.price}</span>
-                          	 	 <c:set var="totalIncome" value="${totalIncome + c.price}" />
-                          	 </c:if>
-                          	 <c:if test="${c.category == '지출'}">
-                             	 <span style="color:red;">-${c.price}</span>
-                             	 <c:set var="totalExpenses" value="${totalExpenses + c.price}" />
-                         	  </c:if>
-                      	 	</div>
-					</c:if>
-				</a>
-				</c:forEach>
-			</td>
-		</c:if>
-	</c:forEach>
-</table>
-<div class="text-center">
+    </tr>
+    <c:set var="totalIncome" value="0" />
+    <c:set var="totalExpenses" value="0" />
+    <c:forEach var="i" begin="0" end="${totalCell - 1}" step="1">
+      <c:set var="d" value="${i - beginBlank + 1}" />
+      <c:if test="${i != 0 && i % 7 == 0}">
+        <tr>
+      </c:if>
+
+      <c:if test="${d < 1 || d > lastDate}">
+        <td></td>
+      </c:if>
+      <c:if test="${!(d < 1 || d > lastDate)}">
+        <td>
+          ${d}
+          <a class="btn btn-outline-secondary btn-sm"
+             href="${pageContext.request.contextPath}/addCashbook?cashbookDate=${targetYear}-${targetMonth < 10 ? '0' : ''}${targetMonth + 1}-${d < 10 ? '0' : ''}${d}">추가</a>
+
+          <c:forEach var="c" items="${list}" varStatus="status">
+            <c:if test="${d == fn:substring(c.cashbookDate, 8, 11)}">
+              <div>
+                <c:if test="${c.category == '수입'}">
+                  <span style="color:black;">+${c.price}</span>
+                  <c:set var="totalIncome" value="${totalIncome + c.price}" />
+                </c:if>
+                <c:if test="${c.category == '지출'}">
+                  <span style="color:red;">-${c.price}</span>
+                  <c:set var="totalExpenses" value="${totalExpenses + c.price}" />
+                </c:if>
+              </div>
+            </c:if>
+          </c:forEach>
+        </td>
+      </c:if>
+    </c:forEach>
+  </table>
+  <div class="text-center">
     <strong style="color:blue;">총 수입: </strong>${totalIncome} | <strong style="color:red;">총 지출: </strong>${totalExpenses}
-</div>
-<br>
-<br>
+  </div>
+  <br>
+  <br>
 </div>
 </body>
 </html>
