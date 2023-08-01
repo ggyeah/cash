@@ -67,14 +67,19 @@ function deleteCashbook(cashbookNo, cashbookDate) {
 		<th>수정</th>
 		<th>삭제</th>
 	</tr>
+	<!-- 총수입 총지출 구하는 변수선언 -->
+	<c:set var="totalIncome" value="0" />
+	<c:set var="totalExpenses" value="0" />
 	<c:forEach items="${list}" var="c">
 		<tr>
 			<td>${c.cashbookDate}</td>
 		<c:if test="${c.category == '수입'}">
 			<td style="color:blue;">+${c.price}</td>
+			 <c:set var="totalIncome" value="${totalIncome + c.price}" />
 		</c:if>
 		<c:if test="${c.category == '지출'}">
 			<td style="color:red;">-${c.price}</td>
+			 <c:set var="totalExpenses" value="${totalExpenses + c.price}" />
 		</c:if>
 			<td>${c.memo}</td>
 			<td>${c.createdate}</td>
@@ -82,7 +87,12 @@ function deleteCashbook(cashbookNo, cashbookDate) {
 			<td><a href="${pageContext.request.contextPath}/modifyCashbook?cashbookNo=${c.cashbookNo}" class="btn btn-outline-secondary btn-sm">수정</a></td>
 			 <td><button type="button" onclick="deleteCashbook(${c.cashbookNo}, '${c.cashbookDate}')" class="btn btn-outline-secondary btn-sm">삭제</button></td>
 		</tr>
-	</c:forEach>
+		</c:forEach>
+		<tr>
+	    	<td colspan="7" class="text-center">
+	        	<strong style="color:blue;">총 수입: </strong>${totalIncome} | <strong style="color:red;">총 지출: </strong>${totalExpenses}
+	    	</td>
+		</tr>
 </table>
 </form>
 </div>

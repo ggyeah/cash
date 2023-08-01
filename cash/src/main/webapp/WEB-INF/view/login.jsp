@@ -57,7 +57,11 @@ $(document).ready(function() {
       <input type="text" name="memberId" id="id" placeholder="ID" value="${savaloginId}"/>
       <input type="password" name="memberPw" id="pw" placeholder="Password" />
       <div style="font-family: 'Jua', sans-serif;">
-         ID저장<input type="checkbox" name="idSave" value="y">
+	      <table>
+		      	<tr>
+		         <td>ID저장<input type="checkbox" name="idSave" value="y"></td>
+		        </tr>
+	      </table>
       </div>
       <button type="submit" id="Btn">LOGIN</button>
     </form>

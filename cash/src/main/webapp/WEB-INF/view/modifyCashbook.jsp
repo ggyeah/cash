@@ -5,7 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>modifyCashbook.jsp</title>
-<link rel="stylesheet" href="css/login.css" type="text/css">
+<link rel="stylesheet" href="css/font.css" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Jua&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -58,11 +63,27 @@ $(document).ready(function() {
 });
 </script>
 </head>
-<body>
+<body style="background: #f6f5f7;">
 <div class="container">
+<nav class="navbar navbar-expand bg-white navbar-white">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="${pageContext.request.contextPath}/memberOne">회원정보</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/logout">로그아웃</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="${pageContext.request.contextPath}/calendar">달력</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
 <form method="post" action="${pageContext.request.contextPath}/modifyCashbook?cashbookNo=${cashbookNo}" id="Form">
 	<h1>수정</h1>
-	<table>
+	<table class="table table-bordered">
 		<tr>
 			<th>이름</th>
 			<td>${cashbook.memberId}</td>

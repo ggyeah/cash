@@ -40,14 +40,14 @@
 ${targetYear}년 ${targetMonth+1}월
 <a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth + 1}" style="color:black;">&#10145;</a>
 </h2>
+<c:if test="${not empty htList}">
 <h2 class="text-center">이달의 해시태그</h2>
-
-
 	<div>
 		<c:forEach var="m" items="${htList}">
 			<a href="${pageContext.request.contextPath}/cashbookListByTag?word=${m.word}"  style="color:black;"># ${m.word}(${m.cnt})</a>
 		</c:forEach>
 	</div>
+</c:if>
 <table class="table table-bordered">
    <tr class="table-danger">
       <th>월</th>
@@ -72,15 +72,20 @@ ${targetYear}년 ${targetMonth+1}월
 			<td>
 				${d}
 				<a class="btn btn-outline-secondary btn-sm" href="${pageContext.request.contextPath}/addCashbook?cashbookDate=${targetYear}-${targetMonth < 10 ? '0' : ''}${targetMonth+1}-${d < 10 ? '0' : ''}${d}">추가</a>
+				<!-- 총수입 총지출 구하는 변수선언 -->
+				<c:set var="totalIncome" value="0" />
+				<c:set var="totalExpenses" value="0" />
 				<c:forEach var="c" items="${list}"  varStatus="status">
 				<a href="${pageContext.request.contextPath}/cashbookOne?cashbookDate=${c.cashbookDate}">
                   		 <c:if test="${d == fn:substring(c.cashbookDate,8,11)}">
                       		 <div>
                           	 <c:if test="${c.category == '수입'}">
                              	 <span style="color:black;">+${c.price}</span>
+                          	 	 <c:set var="totalIncome" value="${totalIncome + c.price}" />
                           	 </c:if>
                           	 <c:if test="${c.category == '지출'}">
                              	 <span style="color:red;">-${c.price}</span>
+                             	 <c:set var="totalExpenses" value="${totalExpenses + c.price}" />
                          	  </c:if>
                       	 	</div>
 					</c:if>
@@ -90,6 +95,11 @@ ${targetYear}년 ${targetMonth+1}월
 		</c:if>
 	</c:forEach>
 </table>
+<div class="text-center">
+    <strong style="color:blue;">총 수입: </strong>${totalIncome} | <strong style="color:red;">총 지출: </strong>${totalExpenses}
+</div>
+<br>
+<br>
 </div>
 </body>
 </html>
