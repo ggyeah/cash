@@ -77,11 +77,11 @@ ${targetYear}년 ${targetMonth+1}월
 	            		<c:if test="${d == fn:substring(c.cashbookDate, 8, 11)}">
 	            		<div>
 			                <c:if test="${c.category == '수입'}">
-			                  <span style="color:black;">+${c.price}</span>
+			                  <span style="color:blue;">+${c.price}원</span>
 			                  <c:set var="totalIncome" value="${totalIncome + c.price}" />
 			                </c:if>
 			                <c:if test="${c.category == '지출'}">
-			                  <span style="color:red;">-${c.price}</span>
+			                  <span style="color:red;">-${c.price}원</span>
 			                  <c:set var="totalExpenses" value="${totalExpenses + c.price}" />
 			                </c:if>
 			             </div>

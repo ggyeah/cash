@@ -82,8 +82,8 @@ $(document).ready(function() {
 		<tr>
 			<th>카테고리</th>
 		    <td>
-		        <label><input type="radio" name="category" value="수입" id="category">수입</label>
-		        <label><input type="radio" name="category" value="지출" id="category">지출</label>
+		        <label style="color:blue;"><input type="radio" name="category" value="수입" id="category">수입</label>
+		        <label style="color:red;"><input type="radio" name="category" value="지출" id="category">지출</label>
 		        <span id="categoryMsg" class="msg"></span>
 		    </td>
 		</tr>
